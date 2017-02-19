@@ -1,22 +1,50 @@
 import React, { Component } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Icon, Dropdown, Badge } from 'antd'
 const { Header, Content } = Layout
+
+import './App.css'
+import logo from './logo.svg'
+
+// 个人信息menu
+const userMenu = (
+	<Menu className='app_header-userMenu' >
+		<Menu.Item key='0'>
+			<a href='#'><Icon type='user' style={{marginRight: 10}} />个人信息</a>
+		</Menu.Item>
+		<Menu.Item key='1'>
+			<a href='#'><Icon type='setting' style={{marginRight: 10}} />设置</a>
+		</Menu.Item>
+		<Menu.Divider />
+		<Menu.Item key='2'>
+			<a href='#'><Icon type='logout' style={{marginRight: 10}} />退出登录</a>
+		</Menu.Item>
+	</Menu>
+)
+
+// 通知信息menu
+// const notificationMenu = (
+
+// )
 
 class App extends Component {
 	render() {
 		return(
-			<Layout className='layout'>
-				<Header>
-					<Menu
-						theme='dark'
-						mode='horizontal'
-						style={{ lineHeight: '64px' }}>
-						<Menu.Item key='1'>Nav 1</Menu.Item>
-						<Menu.Item key='2'>Nav 2</Menu.Item>
-						<Menu.Item key='3'>Nav 3</Menu.Item>
-					</Menu>
+			<Layout>
+				<Header className='app_header'>
+					<img src={logo} className='app_logo' alt='logo' />
+					<div className='app_header-menu'>
+							<Badge
+								className='app_menu-notificationIcon' 
+								count={5}
+								overflowCount={100}>
+								<Icon type='notification' />
+							</Badge>
+						<Dropdown overlay={userMenu}>
+							<Icon className='app_menu-userIcon' type='user' />
+						</Dropdown>
+					</div>
 				</Header>
-				<Content style={{ padding: '0 50px' }}>
+				<Content className='app_content'>
 					<div>{this.props.children}</div>
 				</Content>
 			</Layout>
