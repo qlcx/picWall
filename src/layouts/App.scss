@@ -36,6 +36,14 @@
   top: 15px;
   left: 10px;
 }
+// 通知信息下拉菜单属性设置
+.app_header-notificationMenu {
+  top: 15px;
+  width: 300px;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
 // 正文部分
 .app_content {
