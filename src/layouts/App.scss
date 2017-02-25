@@ -1,11 +1,13 @@
-// 页面头部
+/* 页面头部*/
 .app_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 20px;
   background-color: #f7f7f7;
-  height: 50px;
+  border-bottom: 1px solid #aaa;
 
-  // logo属性
+  /* logo属性*/
   .app_logo {
     margin: 10px 0;
     width: auto;
@@ -15,28 +17,37 @@
   }
 }
 
-// 顶部菜单栏
+/* 顶部菜单栏*/
 .app_header-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   width: 100%;
   background-color: transparent;
 
-  // 通知icon && 个人信息icon
+  /* 通知icon && 个人信息icon*/
   .app_menu-notificationIcon,
   .app_menu-userIcon {
     font-size: 2.2rem;
     padding: 0 20px;
   }
 }
-// 个人信息下拉菜单属性设置
+/* 个人信息下拉菜单属性设置*/
 .app_header-userMenu{
   top: 15px;
   left: 10px;
+
+  a {
+    font-size: 1.4rem
+  }
 }
-// 通知信息下拉菜单属性设置
+/* 通知信息下拉菜单属性设置*/
 .app_header-notificationMenu {
   top: 15px;
   width: 300px;
@@ -45,8 +56,8 @@
   overflow-x: hidden;
 }
 
-// 正文部分
+/* 正文部分*/
 .app_content {
   background-color: #fff;
-  padding: 0 50px;
+  padding: 20px 20px 0 20px;
 }
