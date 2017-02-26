@@ -64,28 +64,38 @@ class PicLists extends Component {
     // 窗口可视宽度
     let windowCW = document.documentElement.clientWidth
     // 计算可以容纳多少列
-    let row_cnt = Math.floor(windowCW / 240)
+    let row_cnt = Math.floor(windowCW / 235)
     // 居中
-    let center = (windowCW - row_cnt * 240) / 2
+    let center = (windowCW - row_cnt * 235) / 2
     // 存放imgContainer的高度
     let arrH = []
     
     for(let i = 0; i < aImg.length; i++) {
-      console.log(aImg.length)
       let j = i ? (i % row_cnt) : 0
 
       if(arrH.length === row_cnt) {
         // 一行排满后移到下一行
-        aImg[i].style.left = center + j*240 + 'px'
-        aImg[i].style.top = arrH[j] + 4 + 'px'
-        arrH[j] += aImg[i].offsetHeight + 4
+        let min = this._findMinH(arrH)
+        aImg[i].style.left = center + min*235 +'px'
+        aImg[i].style.top = arrH[min] + 10 + 'px'
+        arrH[min] += aImg[i].offsetHeight + 15
         
       } else {
         arrH[j] = aImg[i].offsetHeight
-        aImg[i].style.left = center + 236*j+4*j + 'px'
-        aImg[i].style.top = 0
+        aImg[i].style.left = center + 235*j + 'px'
+        aImg[i].style.top += aImg[i].offsetHeight + 15
       }
     }
+  }
+
+  // 获取长度最短的一列
+  _findMinH(arrH) {
+    let min_cnt = 0
+    for(let i = 0; i < arrH.length; i++) {
+      min_cnt = Math.min(arrH[min_cnt], arrH[i]) === arrH[min_cnt] ? min_cnt : i      
+    }
+
+    return min_cnt
   }
 
   render() {
